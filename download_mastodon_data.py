@@ -83,12 +83,9 @@ if __name__ == "__main__":
             index += 1
         else:
             break
-
-
-
-
-
-
+    
+    print(accounts)
+        
 
     threads = []
     for account in accounts:
