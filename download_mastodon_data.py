@@ -6,6 +6,9 @@ import orjson as json
 import mastodon
 from mastodon.streaming import StreamListener, CallbackStreamListener
 
+import os
+from dotenv import load_dotenv
+
 
 def activate_account(login, email, password):
     nick, domain = login.split("@")
@@ -57,13 +60,14 @@ def run_listener(login, email, password):
             print(f'>>- Reconnecting {filename} ...')
 
 
-accounts = [
-    ("server",
-     "email",
-     "pw")]
 
 
 if __name__ == "__main__":
+
+    load_dotenv()
+    accounts = os.getenv('ACCOUNTS')
+
+
     threads = []
     for account in accounts:
         login, email, password = account
