@@ -5,7 +5,6 @@ import orjson as json
 
 import mastodon
 from mastodon.streaming import StreamListener, CallbackStreamListener
-from ftlangdetect import detect
 
 
 def activate_account(login, email, password):
@@ -35,17 +34,8 @@ def save_toot(toot, filename):
         tootfile.write(json.dumps(toot) + b"\n")
 
 
-def print_toot(toot):
-    print(toot)
-    # if toot.get('language') == 'de':
-    # lang = detect(text=toot['content']).get('lang')
-    # if lang == 'de':
-    #     print(toot['content'])
-
-
 def handle_toot(toot, filename):
     save_toot(toot, filename)
-    # print_toot(toot)
 
 
 def run_listener(login, email, password):
@@ -67,6 +57,10 @@ def run_listener(login, email, password):
             print(f'>>- Reconnecting {filename} ...')
 
 
+accounts = [
+    ("server",
+     "email",
+     "pw")]
 
 
 if __name__ == "__main__":
