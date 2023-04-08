@@ -65,7 +65,29 @@ def run_listener(login, email, password):
 if __name__ == "__main__":
 
     load_dotenv()
-    accounts = os.getenv('ACCOUNTS')
+        
+    accounts = []
+    index = 1
+
+    while True:
+        username_key = f"ACCOUNTS_USERNAME_{index}"
+        email_key = f"ACCOUNTS_EMAIL_{index}"
+        password_key = f"ACCOUNTS_PASSWORD_{index}"
+
+        username = os.getenv(username_key)
+        email = os.getenv(email_key)
+        password = os.getenv(password_key)
+
+        if username and email and password:
+            accounts.append((username, email, password))
+            index += 1
+        else:
+            break
+
+
+
+
+
 
 
     threads = []
