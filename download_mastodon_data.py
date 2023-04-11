@@ -33,7 +33,7 @@ def activate_account(login, email, password):
     return api
 
 def save_toot(toot, filename):
-    with open(f"fediverse-{filename}-toots.log", "ba") as tootfile:
+    with open(f"Data/fediverse-{filename}-toots.log", "ba") as tootfile:
         tootfile.write(json.dumps(toot) + b"\n")
 
 
