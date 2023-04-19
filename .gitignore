@@ -1,5 +1,7 @@
 .env
 /Data/*.log
+/Data/*.pickle
 Auswertung.ipynb
 Notizen.docx
 ~$otizen.docxs
+*.html
