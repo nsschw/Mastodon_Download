@@ -74,13 +74,3 @@ nx.draw(G, with_labels=True, node_size=100, font_size=10, font_color="black", no
 
 #save the graph as image
 plt.savefig("network_analysis.png", dpi=300)
-
-            
-
-
-
-
-    
-
-    
-    
