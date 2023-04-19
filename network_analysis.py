@@ -63,10 +63,11 @@ for i, connections in enumerate(list_of_connections):
             x += 1
             
 # Create a graph
-G = nx.from_pandas_edgelist(df_connections, "server", "origin_server", "weight")
+G = nx.from_pandas_edgelist(df_connections, "server", "origin_server", "weight", create_using=nx.DiGraph())
 
 # Create a list of edge weights
 edge_weights = [d["weight"] * 100 for _, _, d in G.edges(data=True)]
+
 
 # Plot the graph
 plt.figure(figsize=(10,10))
