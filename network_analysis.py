@@ -38,7 +38,7 @@ for list in list_of_data:
     list_of_df.append(df)
 
 
-# Create a list of all accounts
+# Create a list of all connections from downloaded instances to other instances
 list_of_connections = []
 for df in list_of_df:
     no_accounts_from_servers = df["server"].value_counts()
