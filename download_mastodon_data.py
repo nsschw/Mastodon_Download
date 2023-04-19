@@ -13,9 +13,9 @@ from dotenv import load_dotenv
 def activate_account(login, email, password):
     nick, domain = login.split("@")
     server_url = f'https://{domain}'
-    app_name = f'{nick}_app'
-    client_file = f'{nick}_clientcred.secret'
-    user_file = f'{nick}_usercred.secret'
+    app_name = f'{login}_app'
+    client_file = f'{login}_clientcred.secret'
+    user_file = f'{login}_usercred.secret'
     if not pathlib.Path(client_file).exists():
         mastodon.Mastodon.create_app(
             app_name,
