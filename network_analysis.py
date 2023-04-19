@@ -24,6 +24,7 @@ veganism_social = [json.loads(line) for line in open(f"Data/fediverse-veganism.s
 list_of_data = [climatejustice_rocks, mastodon_green, metalhead_club, obo_sh, rollenspiel_social, todon_eu, veganism_social]
 names_of_servers = ["climatejustice.rocks", "mastodon.green", "metalhead.club", "obo.sh", "rollenspiel.social", "todon.eu", "veganism.social"]
 
+# Add server and account_unique columns
 for list in list_of_data:
     for toot in list:
         toot['server'] = toot['account']['acct'].split("@")[-1]
@@ -69,7 +70,7 @@ edge_weights = [d["weight"] * 100 for _, _, d in G.edges(data=True)]
 
 # Plot the graph
 plt.figure(figsize=(10,10))
-nx.draw(G, with_labels=True, node_size=10, font_size=10, font_color="black", node_color="green", edge_color="black", width=edge_weights)
+nx.draw(G, with_labels=True, node_size=100, font_size=10, font_color="black", node_color="green", edge_color="black", width=edge_weights)
 
 #save the graph as image
 plt.savefig("network_analysis.png", dpi=300)
