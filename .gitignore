@@ -1,4 +1,5 @@
 .env
+/Data/jsons
 /Data/*.log
 /Data/*.pickle
 Auswertung.ipynb
