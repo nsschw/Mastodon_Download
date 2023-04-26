@@ -7,33 +7,32 @@ from bs4 import BeautifulSoup
 from tqdm import tqdm
 from sentence_transformers import SentenceTransformer
 
-def parse_text(text, model):
-    text = BeautifulSoup(text, "html.parser").get_text()
-    embedding = model.encode(text).tolist()
-    return text, embedding
 
 def process_file(args):
     file, model = args
+
+    DATELIST = ["2023-04-19", "2023-04-20", "2023-04-21", "2023-04-22", "2023-04-23", "2023-04-24", "2023-04-25"]
+
+    if not os.path.exists(f"Data/jsons"):
+        os.makedirs(f"Data/jsons")    
+    
     if file[-3:] == "log":
-            with open(f"Data/{file}", "r", encoding="utf-8") as f:
-                for line in f:
-                    try:
-                        json_line = json.loads(line)
-                        date = json_line["created_at"][:10]
-                        server = os.path.splitext(file)[0]
+        with open(f"Data/{file}", "r", encoding="utf-8") as f:
+            for line in f:
+                try:
+                    json_line = json.loads(line)
+                    date = json_line["created_at"][:10]
+                    server = os.path.splitext(file)[0]
 
-                        json_line["text"], json_line["embedding"] = parse_text(json_line["content"], model)
-
-                        if not os.path.exists(f"Data/jsons"):
-                            os.makedirs(f"Data/jsons")
-
+                    if date in DATELIST:                    
                         with open(f"Data/jsons/{date}_{server}.json", "a", encoding="utf-8") as date_file:
                             date_file.write(json.dumps(json_line) + "\n")
 
-                    except Exception as e:
-                        print(e)
+                except Exception as e:
+                    print(e)
 
 if __name__ == '__main__':
+
     model_sentence = SentenceTransformer('sentence-transformers/all-mpnet-base-v2', device="cuda")
     files = os.listdir("Data")
     with Pool() as p:
