@@ -21,8 +21,8 @@ todon_eu = [json.loads(line) for line in open(f"Data/fediverse-todon.eu-toots.lo
 veganism_social = [json.loads(line) for line in open(f"Data/fediverse-veganism.social-toots.log", "r", encoding="utf-8")]
 
 
-list_of_data = [climatejustice_rocks, mastodon_green, metalhead_club, obo_sh, rollenspiel_social, todon_eu, veganism_social]
-names_of_servers = ["climatejustice.rocks", "mastodon.green", "metalhead.club", "obo.sh", "rollenspiel.social", "todon.eu", "veganism.social"]
+list_of_data = [climatejustice_rocks, mastodon_green,  obo_sh, rollenspiel_social, metalhead_club, todon_eu, veganism_social]
+names_of_servers = ["climatejustice.rocks", "mastodon.green", "obo.sh", "rollenspiel.social", "todon.eu", "veganism.social"]
 
 # Add server and account_unique columns
 for list in list_of_data:
